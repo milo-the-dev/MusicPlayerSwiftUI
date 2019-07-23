@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct MusicLibrary : View {
+struct MusicLibrary: View {
 	
 	private var songs: [Song] = []
 	
@@ -18,14 +18,27 @@ struct MusicLibrary : View {
 	
     var body: some View {
 		NavigationView {
-			List(songs.identified(by: \.title)) { song in
-				NavigationButton(destination: PlayerView(song: song)) {
-					SongRow(song: song)
-				}
-			}
-			.navigationBarTitle(Text("Music"))
+			SongsList(songs: songs)
+				.navigationBarTitle(Text("Music"))
 		}
     }
+}
+
+struct SongsList: View {
+	
+	private var songs: [Song]
+	
+	init(songs: [Song]) {
+		self.songs = songs
+	}
+	
+	var body: some View {
+		List(songs, id: \.title) { song in
+			NavigationLink(destination: PlayerView(song: song)) {
+				SongRow(song: song)
+			}
+		}
+	}
 }
 
 struct SongRow: View {
