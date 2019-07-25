@@ -30,6 +30,7 @@ struct PlayerView : View {
 			
 		}
 		.navigationBarTitle(Text(song.title), displayMode: .inline)
+		.padding()
 	}
 	
 }
