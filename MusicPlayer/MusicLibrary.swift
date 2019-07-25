@@ -9,7 +9,8 @@
 import SwiftUI
 
 struct MusicLibrary: View {
-	
+	@EnvironmentObject var state: AppState
+	@State var isShowingPlayer = false
 	private var songs: [Song] = []
 	
 	init(songs: [Song]) {
@@ -18,14 +19,28 @@ struct MusicLibrary: View {
 	
     var body: some View {
 		NavigationView {
-			SongsList(songs: songs)
-				.navigationBarTitle(Text("Music"))
+			VStack {
+				SongsList(songs: songs)
+					.environmentObject(state)
+					.navigationBarTitle(Text("Music"))
+				
+				if state.isPlaying {
+					MiniPlayer(song: state.currentSong!)
+						.frame(height: 50)
+						.tapAction { self.isShowingPlayer = true }
+						.environmentObject(state)
+				}
+			}
+			.sheet(isPresented: $isShowingPlayer) {
+				PlayerView(song: self.state.currentSong!)
+					.environmentObject(self.state)
+			}
 		}
     }
 }
 
 struct SongsList: View {
-	
+	@EnvironmentObject var state: AppState
 	private var songs: [Song]
 	
 	init(songs: [Song]) {
@@ -34,7 +49,7 @@ struct SongsList: View {
 	
 	var body: some View {
 		List(songs, id: \.title) { song in
-			NavigationLink(destination: PlayerView(song: song)) {
+			NavigationLink(destination: PlayerView(song: song).environmentObject(self.state)) {
 				SongRow(song: song)
 			}
 		}
@@ -65,7 +80,10 @@ struct SongRow: View {
 #if DEBUG
 struct MusicLibrary_Previews : PreviewProvider {
     static var previews: some View {
-		MusicLibrary(songs: Library.songs)
+		let state = AppState()
+		state.isPlaying = true
+		state.currentSong = Library.songs.first!
+		return MusicLibrary(songs: Library.songs).environmentObject(state)
     }
 }
 #endif

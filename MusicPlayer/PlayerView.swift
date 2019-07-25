@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct PlayerView : View {
-	
+	@EnvironmentObject var state: AppState
 	private let song: Song
 	
 	init(song: Song) {
@@ -24,11 +24,12 @@ struct PlayerView : View {
 				.cornerRadius(10)
 				.clipped(antialiased: true)
 			
-			PlayerControls(song: song)
-			
+			PlayerControls(song: song, isPlaying: $state.isPlaying) {
+				self.state.currentSong = self.song
 			}
-			.navigationBarTitle(Text(song.title), displayMode: .inline)
-			.navigationBarItems(trailing: Image(systemName: "chevron.down"))
+			
+		}
+		.navigationBarTitle(Text(song.title), displayMode: .inline)
 	}
 	
 }
@@ -38,6 +39,7 @@ struct ContentView_Previews : PreviewProvider {
 	static var previews: some View {
 		NavigationView {
 			PlayerView(song: Library.songs[1])
+				.environmentObject(AppState())
 		}
 	}
 }
@@ -45,13 +47,10 @@ struct ContentView_Previews : PreviewProvider {
 
 struct PlayerControls : View {
 	
+	let song: Song
 	@State private var duration: Double = 0
-	@State private var isPlaying = false
-	private let song: Song
-	
-	init(song: Song) {
-		self.song = song
-	}
+	@Binding var isPlaying: Bool
+	var didPlaySong: () -> Void
 	
 	var body: some View {
 		VStack {
@@ -86,7 +85,12 @@ struct PlayerControls : View {
 						.frame(width: 20)
 						.foregroundColor(.yellow)
 				}
-				Button(action: { self.isPlaying.toggle() }) {
+				Button(action: {
+					self.isPlaying.toggle()
+					if self.isPlaying {
+						self.didPlaySong()
+					}
+				}) {
 					Image(systemName: isPlaying ? "pause" : "play")
 						.resizable()
 						.aspectRatio(1, contentMode: .fit)

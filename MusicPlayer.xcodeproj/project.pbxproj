@@ -16,6 +16,8 @@
 		721BFA0222BD96F700E4F815 /* MusicPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721BFA0122BD96F700E4F815 /* MusicPlayerTests.swift */; };
 		7220A9BF22C04C42006881C2 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7220A9BE22C04C42006881C2 /* Library.swift */; };
 		72D3DAC722C8039600245EA3 /* MusicLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D3DAC622C8039600245EA3 /* MusicLibrary.swift */; };
+		72F860BF22E68CF600F37FC3 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F860BE22E68CF600F37FC3 /* AppState.swift */; };
+		72FAD94722E9208B00AA2103 /* MiniPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FAD94622E9208B00AA2103 /* MiniPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,8 @@
 		721BFA0322BD96F700E4F815 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7220A9BE22C04C42006881C2 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		72D3DAC622C8039600245EA3 /* MusicLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicLibrary.swift; sourceTree = "<group>"; };
+		72F860BE22E68CF600F37FC3 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppState.swift; path = ../../../../../../../System/Volumes/Data/Users/marlowcharite/Developer/ios/scratchpad/MusicPlayer/MusicPlayer/AppState.swift; sourceTree = "<group>"; };
+		72FAD94622E9208B00AA2103 /* MiniPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MiniPlayer.swift; path = ../../../../../../../System/Volumes/Data/Users/marlowcharite/Developer/ios/scratchpad/MusicPlayer/MusicPlayer/MiniPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,11 +91,13 @@
 				721BF9EC22BD96F600E4F815 /* SceneDelegate.swift */,
 				721BF9EE22BD96F600E4F815 /* PlayerView.swift */,
 				72D3DAC622C8039600245EA3 /* MusicLibrary.swift */,
+				72FAD94622E9208B00AA2103 /* MiniPlayer.swift */,
 				721BF9F022BD96F700E4F815 /* Assets.xcassets */,
 				721BF9F522BD96F700E4F815 /* LaunchScreen.storyboard */,
 				721BF9F822BD96F700E4F815 /* Info.plist */,
 				721BF9F222BD96F700E4F815 /* Preview Content */,
 				7220A9BE22C04C42006881C2 /* Library.swift */,
+				72F860BE22E68CF600F37FC3 /* AppState.swift */,
 			);
 			path = MusicPlayer;
 			sourceTree = "<group>";
@@ -217,6 +223,8 @@
 				721BF9EB22BD96F600E4F815 /* AppDelegate.swift in Sources */,
 				7220A9BF22C04C42006881C2 /* Library.swift in Sources */,
 				721BF9ED22BD96F600E4F815 /* SceneDelegate.swift in Sources */,
+				72F860BF22E68CF600F37FC3 /* AppState.swift in Sources */,
+				72FAD94722E9208B00AA2103 /* MiniPlayer.swift in Sources */,
 				72D3DAC722C8039600245EA3 /* MusicLibrary.swift in Sources */,
 				721BF9EF22BD96F600E4F815 /* PlayerView.swift in Sources */,
 			);
